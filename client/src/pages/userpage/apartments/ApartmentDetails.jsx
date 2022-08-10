@@ -20,12 +20,6 @@ const ApartmentDetails = () => {
     dispatch(getPost(id));
   }, [id]);
 
-  useEffect(() => {
-    if(post) {
-      dispatch(getPostsBySearch({ search: 'none', ingredients: post?.ingredients.join(',') }));
-    }
-  }, [post]);
-
   if(!post) return "no post";
 
   if(isLoading) {
@@ -35,15 +29,11 @@ const ApartmentDetails = () => {
         <CircularProgress size="7em" />
       </Box>
       <Box sx={{mt: 5}} display="flex" alignItems="center" justifyContent="center">
-        <Typography variant="h4" color="primary">Loading Recipe 🥕</Typography>
+        <Typography variant="h4" color="primary">Loading Details 🏠</Typography>
       </Box>
     </Paper>
     );
   };
-
-  const recommendedPosts = posts.filter(({_id}) => _id !== post._id);
-
-  const openPost = (id) => navigate(`/apartments/${id}`);
 
   const drawerWidth = 240;
 
@@ -79,47 +69,29 @@ const ApartmentDetails = () => {
 
     <div>
       <Box sx={{ display: 'flex' }}>
-        <UserSidebar open={open} setOpen={setOpen} pageTitle="Recipes" />
+        <UserSidebar open={open} setOpen={setOpen} pageTitle="Apartments" />
         <Main open={open}>
           <DrawerHeader />
           <Paper>
             <div>
               <Button sx={{mb: 2}} color="primary" onClick={()=>navigate("/apartments")}>
-                <ArrowBackIosNewIcon />&nbsp;Back to Recipes
+                <ArrowBackIosNewIcon />&nbsp;Back to Apartments
               </Button>
               <div>
                 <Typography variant="h4" component="h2">{post.title}</Typography>
-                <Typography variant="body1">Created by: {post.userName || "Anonymous Cook"}</Typography>
-                <Typography variant="h6" color="primary">Difficulty: {post.difficulty}, Total Time: {post.preptime+post.cooktime} mins</Typography>
-                <Typography gutterBottom variant="h6" color="textSecondary" component="h2">Ingredients: {post.ingredients.map((ingredient) => `• ${ingredient} `)}</Typography>
+                <Typography variant="body1">Posted By: {post.refCode || "N/A"}</Typography>
+                <Typography variant="h6" color="primary">Rent: ${post.rentPrice}, Utilities: ${post.utilitiesPrice}</Typography>
+                <Typography variant="h6" color="primary">Parking: {post.parking}, Time to Campus: {post.travelTime} mins</Typography>
+                <Typography variant="h6" color="primary">Room Type: {post.roomType}, Lease Type: {post.leaseType}</Typography>
               </div>
               <div>
                 <img width="300px" src={post.selectedFile || 'https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png'} alt={post.title} />
               </div>
               <div>
-                <Typography variant="body2" color="textSecondary">Prep Time: {post.preptime} mins, Cook Time: {post.cooktime} mins </Typography>
-                <Typography variant="body2" color="textSecondary">Category: {post.category}, Cuisine: {post.cuisine}</Typography>
                 <Typography variant='body1'>Details: </Typography>
                 <Typography gutterBottom variant="body1" component="p">{post.description}</Typography>
               </div>
             </div>
-            {/* <Divider />
-            {recommendedPosts.length && (
-              <div>
-                <Typography gutterBottom variant="h5" color="primary">You might also like:</Typography>
-                <div>
-                  {recommendedPosts.map(({ title, difficulty, preptime, cooktime, userName, likes, selectedFile, _id }) => (
-                    <div style={{ margin: '10px', cursor: "pointer"}} onClick={() => openPost(_id)} key={_id}>
-                      <Typography gutterBottom variant="h6">{title}</Typography>
-                      <img src={selectedFile} width="200px" />
-                      <Typography variant="subtitle1">Likes: {likes.length}</Typography>
-                      <Typography variant="subtitle1">Difficulty: {difficulty}</Typography>
-                      <Typography variant="subtitle1">Total Time: {preptime+cooktime} mins</Typography>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )} */}
           </Paper>
         </Main>
       </Box>

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Paper, Grid, Typography, Container, Divider, Stack } from '@mui/material';
-import { GoogleLogin } from '@react-oauth/google';
+import { Button, Paper, Grid, Typography, Container, Divider, Stack, Autocomplete, TextField } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import Input from './Input';
 import jwt_decode from 'jwt-decode';
@@ -10,7 +9,7 @@ import logo from '../../assets/logo.png';
 import CssBaseline from '@mui/material/CssBaseline'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 
-const initialState = { firstName: '', lastName: '', userName: '', email: '', country: '', password: '', confirmPassword: ''};
+const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '', UID: ''};
 
 const Auth = () => {
 
@@ -41,23 +40,6 @@ const Auth = () => {
     setShowPassword(false);
   };
 
-  const googleSuccess = async (res) => {
-    const token = res?.credential;
-    const result = jwt_decode(res?.credential);
-
-    try {
-        dispatch({ type: 'AUTH', data: { token, result }});
-
-        navigate('/survey');
-    } catch (error) {
-        console.log(error);
-    }
-  };
-
-  const googleFailure = () => {
-    console.log("error");
-  };
-
   const theme = createTheme({
     palette: {
       background: {
@@ -81,11 +63,10 @@ const Auth = () => {
                     <>
                       <Input name="firstName" label="First Name" handleChange={handleChange} half />
                       <Input name="lastName" label="Last Name" handleChange={handleChange} half />
-                      <Input name="userName" label="Username" handleChange={handleChange} />
-                      <Input name="country" label="Country" handleChange={handleChange} />
+                      <Input name="UID" label="UCLA UID" handleChange={handleChange} />
                     </>
                   )}
-                  <Input name="email" label="Email Address" handleChange={handleChange} type="email" />
+                  <Input name="email" label="Email Address (@ucla.edu)" handleChange={handleChange} type="email" />
                   <Input name="password" label="Password" autocomplete="on" handleChange={handleChange} type={showPassword ? "text" : "password"} handleShowPassword={handleShowPassword} />
                   { isSignup && <Input name="confirmPassword" label="Confirm Password" handleChange={handleChange} type="password"/>}
                   <Button type="submit" fullWidth variant="contained" color="primary" sx={{mt: 3, mb: 2}}>
@@ -93,13 +74,6 @@ const Auth = () => {
                   </Button>
               </Grid>
               <Divider variant="middle" />
-              <Grid sx={{mt: 3, mb: 1}} style={{width: "300px"}}>
-                <GoogleLogin 
-                          onSuccess={googleSuccess}
-                          onError={googleFailure}
-                          cookiePolicy="single_host_origin"
-                />
-              </Grid>
               <Grid container align="center" justify="center">
                 <Grid item>
                     <Button onClick={switchMode}>

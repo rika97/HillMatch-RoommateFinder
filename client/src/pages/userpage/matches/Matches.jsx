@@ -46,7 +46,7 @@ const Matches = () => {
   return (
     <div>
       <Box sx={{ display: 'flex' }}>
-        <UserSidebar open={open} setOpen={setOpen} pageTitle="Stock" />
+        <UserSidebar open={open} setOpen={setOpen} pageTitle="Matches" />
         <Main open={open}>
           <DrawerHeader />
             <Grow in>

@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.687380f1.css",
+    "main.js": "/static/js/main.7e4fbda3.js",
+    "static/media/recipespage.png": "/static/media/recipespage.5219b298ba2858f5c126.png",
+    "static/media/stocklist.png": "/static/media/stocklist.ab579c8ead39b701b26e.png",
+    "static/media/shoppinglist.png": "/static/media/shoppinglist.bf9a99b2aede7c448d60.png",
+    "static/media/authheader.png": "/static/media/authheader.943838a5a38947d2888a.png",
+    "static/media/logo.png": "/static/media/logo.a007617b31c1420c3a14.png",
+    "static/media/bugs.svg": "/static/media/bugs.1c648158efc1d8e22d07f68074f7bcf0.svg",
+    "static/media/error404.svg": "/static/media/error404.3293ef9d340f665f018d55f0ddf13f34.svg",
+    "static/media/shopping_yellow.svg": "/static/media/shopping_yellow.94d57438680b7884db2d959f6796486e.svg",
+    "static/media/tutorial.svg": "/static/media/tutorial.2dc515f3984676054dae8089da2e0da2.svg",
+    "static/media/people.png": "/static/media/people.5cd2d6fbcd48bd63f106.png",
+    "static/media/contact.svg": "/static/media/contact.7f3d40d6c7c9ecf8cb899d60752b4a4c.svg",
+    "static/media/personalgoals.svg": "/static/media/personalgoals.6b52b0e79d6db78072e1c141ea5f4754.svg",
+    "index.html": "/index.html",
+    "main.687380f1.css.map": "/static/css/main.687380f1.css.map",
+    "main.7e4fbda3.js.map": "/static/js/main.7e4fbda3.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.687380f1.css",
+    "static/js/main.7e4fbda3.js"
+  ]
+}

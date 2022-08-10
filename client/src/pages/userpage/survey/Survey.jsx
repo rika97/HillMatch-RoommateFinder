@@ -4,6 +4,7 @@ import { styled } from '@mui/material/styles';
 
 import Questions from './Questions';
 import UserSidebar from '../../../components/navbar/UserSidebar';
+import SurveyModal from '../../../components/Modals/SurveyModal';
 
 
 const Survey = () => {
@@ -44,11 +45,15 @@ const Survey = () => {
 
   return (
     <div>
+      <SurveyModal />
       <Box sx={{ display: 'flex' }}>
         <UserSidebar open={open} setOpen={setOpen} pageTitle="Survey" />
         <Main open={open}>
           <DrawerHeader />
-            <Typography align="center" variant='h5' color="primary" sx={{ mb: 3 }}>Survey</Typography>
+            <Typography align="center" variant='h3' color="primary" >Survey</Typography>
+            <Typography align="center" component='body2' sx={{ mb: 3 }}>
+              We'll find a match for you. It's in your best interest to be completely honest, we won't share your information with anyone.
+            </Typography>
             <Questions />
         </Main>
       </Box>

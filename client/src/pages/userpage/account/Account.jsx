@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, Card, CardContent } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 import UserSidebar from '../../../components/navbar/UserSidebar';
@@ -39,6 +39,7 @@ const Account = () => {
     justifyContent: 'flex-end',
   }));
 
+
   return (
     <div>
       <Box sx={{ display: 'flex' }}>
@@ -47,8 +48,13 @@ const Account = () => {
           <DrawerHeader />
           <Typography variant="h6" component="h6">Name: {user?.result?.name}</Typography>
           <Typography variant="h6" component="h6">Email: {user?.result?.email}</Typography>
-          <Typography variant="h6" component="h6">Username: {user.result.userName || 'Null' }</Typography>
-          <Typography variant="h6" component="h6">Country: {user.result.country || 'Null' }</Typography>
+          <Typography variant="h6" component="h6">UID: {user.result.UID || 'Null' }</Typography>
+          <Card variant="outlined" sx={{width: "400px", height: "150px", mt: 2, border: 10, borderColor: 'primary.main', borderRadius: 3, backgroundColor: 'secondary.main' }}>
+            <CardContent sx={{mt: -0.5}}>
+              <Typography variant="h6" component="h6" align="center" >RefCode:</Typography>
+              <Typography variant="h2" component="h2" color="primary" align="center">{user.result.refCode || '3RZQ68' }</Typography>
+            </CardContent>
+          </Card>
         </Main>
       </Box>
     </div>

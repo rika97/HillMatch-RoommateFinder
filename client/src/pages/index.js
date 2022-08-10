@@ -5,5 +5,5 @@ export { default as Survey } from './userpage/survey/Survey';
 export { default as Matches } from './userpage/matches/Matches';
 export { default as Apartment } from './userpage/apartments/Apartments';
 export { default as ApartmentDetails } from './userpage/apartments/ApartmentDetails';
-export { default as Chat } from './userpage/chat/Chat';
+export { default as Chats } from './userpage/chats/Chats';
 export { default as Error } from './error/Error';

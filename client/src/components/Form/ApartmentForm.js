@@ -2,20 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { TextField, Typography, Paper, Button, Stack, Autocomplete } from '@mui/material';
 import FileBase from 'react-file-base64';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 
 import { createPost, updatePost } from '../../actions/posts';
 
 const ApartmentForm = ({ currentId, setCurrentId }) => {
   const [postData, setPostData] = useState({
-    title: '', description: '', selectedFile: '', parking: '', roomType: '', leaseType: '', rentPrice: '', utilitiesPrice: '', travelTime: ''
+    title: '', description: '', selectedFile: '', parking: '', roomType: '', leaseType: '', rentPrice: 0, utilitiesPrice: 0, travelTime: 0
   });
   const [parking, setParking] = useState('');
   const [roomType, setRoomType] = useState('');
   const [leaseType, setLeaseType] = useState('');
-  const [rentPrice, setRentPrice] = useState('');
-  const [utilitiesPrice, setUtilitiesPrice] = useState('');
-  const [travelTime, setTravelTime] = useState('');
 
   const post = useSelector((state) => (currentId ? state.posts.posts.find((description) => description._id === currentId) : null));
   const dispatch = useDispatch();
@@ -30,10 +26,10 @@ const ApartmentForm = ({ currentId, setCurrentId }) => {
     e.preventDefault();
 
     if(currentId) {
-      dispatch(updatePost(currentId, {...postData, userName: user?.result?.userName, parking: parking, roomType: roomType, leaseType: leaseType, rentPrice: rentPrice, utilitiesPrice: utilitiesPrice, travelTime: travelTime }));
+      dispatch(updatePost(currentId, {...postData, refCode: user?.result?.refCode, parking: parking, roomType: roomType, leaseType: leaseType }));
       clear();
     } else {
-      dispatch(createPost({...postData, userName: user?.result?.userName, parking: parking, roomType: roomType, leaseType: leaseType, rentPrice: rentPrice, utilitiesPrice: utilitiesPrice, travelTime: travelTime }));
+      dispatch(createPost({...postData, refCode: user?.result?.refCode, parking: parking, roomType: roomType, leaseType: leaseType }));
       clear();
     }
   };
@@ -42,7 +38,7 @@ const ApartmentForm = ({ currentId, setCurrentId }) => {
     return (
       <Paper>
         <Typography variant="h6" align="center">
-          Please Sign In to use Toku.
+          Please Sign In to use HillMatch.
         </Typography>
       </Paper>
     );

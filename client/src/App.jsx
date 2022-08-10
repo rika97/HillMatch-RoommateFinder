@@ -1,10 +1,9 @@
 import React from 'react';
-import { Auth, Account, Chat, Matches, Survey, Apartment, ApartmentDetails, Error } from './pages';
+import { Auth, Account, Chats, Matches, Survey, Apartment, ApartmentDetails, Error } from './pages';
 import { BrowserRouter, Route, Routes, Outlet, Navigate } from 'react-router-dom';
 
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { GoogleOAuthProvider } from '@react-oauth/google';
 
 const App = () => {
   const ProtectedRoute = ({children}) => {
@@ -31,14 +30,13 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <GoogleOAuthProvider clientId='' >
       <BrowserRouter>
         <div className='App'>
           <Routes>
             <Route path="/" element={JSON.parse(localStorage.getItem('profile')) ? <Navigate to="/survey" /> : <Auth/>} />
             <Route path="/" element={<ProtectedRoute />}>
               <Route path="/account" element={<Account />}/>
-              <Route path="/chat" element={<Chat />}/>
+              <Route path="/chats" element={<Chats />}/>
               <Route path="/survey" element={<Survey />}/>
               <Route path="/matches" element={<Matches />}/>
               <Route path="/matches/search" element={<Matches />}/>
@@ -51,7 +49,6 @@ const App = () => {
           </Routes>
         </div>
       </BrowserRouter>
-      </GoogleOAuthProvider>
     </ThemeProvider>
 
   )

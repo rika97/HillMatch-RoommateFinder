@@ -56,7 +56,7 @@ const Post = ({ post, setCurrentId }) => {
 
         <CardContent>
           <Typography variant="h5">{post.title}</Typography>
-          <Typography variant="subtitle1">By {post?.userName || "N/A"}</Typography>
+          <Typography variant="subtitle1">By {post?.refCode || "N/A"}</Typography>
 
           <div align="left">
             <Typography variant="subtitle2">Total Price: ${post.utilitiesPrice+post.rentPrice}</Typography>

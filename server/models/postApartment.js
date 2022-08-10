@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const postSchema = mongoose.Schema({
     title: String,
     description: String,
-    userName: String,
+    refCode: String,
     creator: String,
     parking: String,
     roomType: String,

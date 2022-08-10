@@ -140,7 +140,7 @@ const UserSidebar = ({ pageTitle, open, setOpen }) => {
         >
             <DrawerHeader>
             <Box>
-              <a href="/chat">
+              <a href="/chats">
                 <img src={logoSmall} alt="logo" width={150} height={47} />
               </a>
             </Box>
@@ -150,23 +150,6 @@ const UserSidebar = ({ pageTitle, open, setOpen }) => {
             </DrawerHeader>
             <Divider />
             <List>
-                <ListItem disablePadding onClick={() => {navigate("/chat");}}>
-                    <ListItemButton>
-                    <ListItemIcon>
-                        <ChatIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Chat" />
-                    </ListItemButton>
-                </ListItem>
-
-                <ListItem disablePadding onClick={() => {navigate("/apartments");}}>
-                    <ListItemButton>
-                    <ListItemIcon>
-                        <HomeIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Apartments" />
-                    </ListItemButton>
-                </ListItem>
 
                 <ListItem disablePadding onClick={() => {
                     navigate('/survey');
@@ -185,6 +168,24 @@ const UserSidebar = ({ pageTitle, open, setOpen }) => {
                         <PeopleAltIcon />
                     </ListItemIcon>
                     <ListItemText primary="Matches" />
+                    </ListItemButton>
+                </ListItem>
+
+                <ListItem disablePadding onClick={() => {navigate("/chats");}}>
+                    <ListItemButton>
+                    <ListItemIcon>
+                        <ChatIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Chats" />
+                    </ListItemButton>
+                </ListItem>
+
+                <ListItem disablePadding onClick={() => {navigate("/apartments");}}>
+                    <ListItemButton>
+                    <ListItemIcon>
+                        <HomeIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Apartments" />
                     </ListItemButton>
                 </ListItem>
                 

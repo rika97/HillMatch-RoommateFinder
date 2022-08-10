@@ -21,6 +21,8 @@ export const signup = (formData, navigate) => async (dispatch) => {
         dispatch({ type: AUTH, data });
 
         navigate('/survey');
+
+        
     } catch (error) {
         console.log(error.response.data);
     }
